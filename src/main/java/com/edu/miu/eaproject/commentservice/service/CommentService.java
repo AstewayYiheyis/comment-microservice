@@ -5,9 +5,11 @@ import com.edu.miu.eaproject.commentservice.domain.Comment;
 import java.util.List;
 
 public interface CommentService {
-    public List<Comment> getComments();
-    public Comment getComment(Long id);
-    public void add(Long userId, Long postId, Comment comment);
-    public void update(Long userId, Long postId, Long id, Comment comment);
-    public void delete(Long id);
+    List<Comment> getComments();
+    Comment getComment(Long id);
+    void add(Comment comment);
+    void update(Long id1, Comment comment);
+    void delete(Long id);
+
+    List<Comment> getUserComments(Long postId);
 }
