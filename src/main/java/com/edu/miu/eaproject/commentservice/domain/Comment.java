@@ -10,7 +10,7 @@ public class Comment {
     @GeneratedValue
     private Long id;
 
-    private String username;
+    private String title;
 
     private String body;
     private Long userId;
@@ -19,8 +19,8 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String username, String body) {
-        this.username = username;
+    public Comment(String title, String body) {
+        this.title = title;
         this.body = body;
     }
 
@@ -32,12 +32,12 @@ public class Comment {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTitle(String username) {
+        this.title = username;
     }
 
     public String getBody() {
@@ -68,7 +68,7 @@ public class Comment {
     public String toString() {
         return "Comment{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", username='" + title + '\'' +
                 ", body='" + body + '\'' +
                 '}';
     }

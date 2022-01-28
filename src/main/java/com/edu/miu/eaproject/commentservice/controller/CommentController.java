@@ -13,28 +13,32 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/users/{userId}/posts/{postId}/comments")
+    @GetMapping("/comments")
     public List<Comment> getComments() {
         return commentService.getComments();
     }
 
-    @GetMapping("/users/{userId}/posts/{postId}/comments/{id}")
+    @GetMapping("/comments/{id}")
     public Comment getComment(@PathVariable Long id){
         return commentService.getComment(id);
     }
 
-    @PostMapping("/users/{userId}/posts/{postId}/comments")
-    public void add(@PathVariable Long  userId, @PathVariable Long postId, @RequestBody Comment comment){
-        System.out.println(comment);
-        commentService.add(userId, postId, comment);
+    @GetMapping("/posts/{postId}/comments")
+    public List<Comment> getUserComments(@PathVariable Long postId){
+        return commentService.getUserComments(postId);
     }
 
-    @PutMapping("/users/{userId}/posts/{postId}/comments/{id}")
-    public void update(@PathVariable Long userId, @PathVariable Long postId, @PathVariable Long id, @RequestBody Comment comment){
-        commentService.update(id, postId, id, comment);
+    @PostMapping("/comments")
+    public void add(@RequestBody Comment comment){
+        commentService.add(comment);
     }
 
-    @DeleteMapping("/users/{userId}/posts/{postId}/comments/{id}")
+    @PutMapping("/comments/{id}")
+    public void update(@PathVariable Long id, @RequestBody Comment comment){
+        commentService.update(id, comment);
+    }
+
+    @DeleteMapping("/comments/{id}")
     public void delete(@PathVariable Long id){
         commentService.delete(id);
     }

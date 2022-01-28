@@ -27,29 +27,15 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public void add(Long userId, Long postId, Comment comment) {
-        User user = commentServiceUser.getUser(userId);
-
-        if(user != null){
-            comment.setUserId(userId);
-            comment.setPostId(postId);
-
-            commentRepo.save(comment);
-        }
+    public void add(Comment comment) {
+        commentRepo.save(comment);
     }
 
     @Override
-    public void update(Long userId, Long postId, Long id, Comment comment) {
+    public void update(Long id, Comment comment) {
         comment.setId(id);
 
-        User user = commentServiceUser.getUser(userId);
-
-        if(user != null){
-            comment.setUserId(userId);
-            comment.setPostId(postId);
-
-            commentRepo.save(comment);
-        }
+        commentRepo.save(comment);
     }
 
     @Override
@@ -57,5 +43,10 @@ public class CommentServiceImpl implements CommentService{
         if(commentRepo.existsById(id)){
             commentRepo.deleteById(id);
         }
+    }
+
+    @Override
+    public List<Comment> getUserComments(Long postId) {
+        return commentRepo.findByPostId(postId);
     }
 }
