@@ -1,15 +1,20 @@
 package com.edu.miu.eaproject.commentservice.service;
 
-import com.edu.miu.eaproject.commentservice.domain.Comment;
+import com.edu.miu.eaproject.commentservice.domain.Comments;
 
+import javax.xml.stream.events.Comment;
 import java.util.List;
 
 public interface CommentService {
-    List<Comment> getComments();
-    Comment getComment(Long id);
-    void add(Comment comment);
-    void update(Long id1, Comment comment);
+    List<Comments> getComments();
+    Comments getComment(Long id);
+    void add(Comments comments);
+    void update(Long id1, Comments comments);
     void delete(Long id);
 
-    List<Comment> getUserComments(Long postId);
+    List<Comments> getPostComments(Long postId);
+
+    List<Comments> getUserComments(Long userId);
+
+    List<Comment> getUserPostComment(Long userId, Long postId);
 }

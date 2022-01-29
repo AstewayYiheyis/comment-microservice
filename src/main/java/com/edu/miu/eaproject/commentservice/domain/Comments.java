@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Comment {
+public class Comments {
     @Id
     @GeneratedValue
     private Long id;
@@ -14,12 +14,12 @@ public class Comment {
 
     private String body;
     private Long userId;
-    private Long PostId;
+    private Long postId;
 
-    public Comment() {
+    public Comments() {
     }
 
-    public Comment(String title, String body) {
+    public Comments(String title, String body) {
         this.title = title;
         this.body = body;
     }
@@ -57,11 +57,11 @@ public class Comment {
     }
 
     public Long getPostId() {
-        return PostId;
+        return postId;
     }
 
     public void setPostId(Long postId) {
-        PostId = postId;
+        this.postId = postId;
     }
 
     @Override

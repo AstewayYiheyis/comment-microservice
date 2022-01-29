@@ -1,6 +1,5 @@
 package com.edu.miu.eaproject.commentservice.domain;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class Post {
@@ -8,9 +7,9 @@ public class Post {
 
     private String title;
     private String body;
-    private List<Comment> comments;
+    private List<Comments> comments;
 
-    public Post(String title, String body, List<Comment> comments) {
+    public Post(String title, String body, List<Comments> comments) {
         this.title = title;
         this.body = body;
         this.comments = comments;
@@ -43,11 +42,11 @@ public class Post {
         this.body = body;
     }
 
-    public List<Comment> getComments() {
+    public List<Comments> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<Comments> comments) {
         this.comments = comments;
     }
 }
