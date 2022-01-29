@@ -1,6 +1,5 @@
 package com.edu.miu.eaproject.commentservice.domain;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class User {
@@ -10,5 +9,5 @@ public class User {
 
     private List<Post> posts;
 
-    private List<Comment> comments;
+    private List<Comments> comments;
 }

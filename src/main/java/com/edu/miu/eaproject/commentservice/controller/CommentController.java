@@ -1,10 +1,11 @@
 package com.edu.miu.eaproject.commentservice.controller;
 
-import com.edu.miu.eaproject.commentservice.domain.Comment;
+import com.edu.miu.eaproject.commentservice.domain.Comments;
 import com.edu.miu.eaproject.commentservice.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @RestController
@@ -14,28 +15,33 @@ public class CommentController {
     private CommentService commentService;
 
     @GetMapping("/comments")
-    public List<Comment> getComments() {
+    public List<Comments> getComments() {
         return commentService.getComments();
     }
 
     @GetMapping("/comments/{id}")
-    public Comment getComment(@PathVariable Long id){
+    public Comments getComment(@PathVariable Long id){
         return commentService.getComment(id);
     }
 
     @GetMapping("/posts/{postId}/comments")
-    public List<Comment> getUserComments(@PathVariable Long postId){
-        return commentService.getUserComments(postId);
+    public List<Comments> getPostComments(@PathVariable Long postId){
+        return commentService.getPostComments(postId);
+    }
+
+    @GetMapping("/users/{userId}/comments")
+    public List<Comments> getUserComments(@PathVariable Long userId){
+        return commentService.getUserComments(userId);
     }
 
     @PostMapping("/comments")
-    public void add(@RequestBody Comment comment){
-        commentService.add(comment);
+    public void add(@RequestBody Comments comments){
+        commentService.add(comments);
     }
 
     @PutMapping("/comments/{id}")
-    public void update(@PathVariable Long id, @RequestBody Comment comment){
-        commentService.update(id, comment);
+    public void update(@PathVariable Long id, @RequestBody Comments comments){
+        commentService.update(id, comments);
     }
 
     @DeleteMapping("/comments/{id}")
